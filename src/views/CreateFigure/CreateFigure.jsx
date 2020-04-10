@@ -28,6 +28,8 @@ export default () => {
     //const createFigureResult = useSelector(state => createFigureResultSelector(state));
     const getGroupResult = useSelector(state => getGroupResultSelector(state));
     //Create state
+    const [figureName, setFigureName] = useState("");
+    const [groupName, setGroupName] = useState("Option 1");
     const [positionsData, setPositionsData] = useState(
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     );
@@ -42,31 +44,46 @@ export default () => {
         }
     }
 
-    //Get groups
-    useEffect(() => {
-        if (!getGroupResult) {
-            dispatch(getGroup(user));
-        }
-    });
+    // //Get groups
+    // useEffect(() => {
+    //     if (!getGroupResult) {
+    //         dispatch(getGroup(user));
+    //     }
+    // });
+
+    //Handle select change
+    const handleSelectChange = (event) => {
+        setGroupName(event.target.value)
+        console.log(groupName);
+    }
+
+    //Handle input change
+    const handleInputChange = (event) => {
+        setFigureName(event.target.value);
+        console.log(figureName);
+        const select = document.getElementsByClassName('select');
+        console.log(select.value);
+    }
 
     //Handle click figure item
-    const handleFigureItemClick = (p) => {
-        //if (positions[p] === 0) {
+    const handleFigureItemClick = (event) => {
+        const p = event.target.id
+        if (positions[p] === 0) {
             positions[p] = 1;
-        // } else {
-        //     positions[p] = 0;
-        // }
-        console.log(positionsData[p]) 
-        setPositionsData(positions)
+            event.target.classList.add('figure-color');
+        } else {
+            positions[p] = 0;
+            event.target.classList.remove('figure-color');
+        }
         console.log(positions);
-        console.log(positionsData);
+        console.log(event.target.id);
     };
 
     //Render groups
-    const renderGroups = () => {
-        return getGroupResult.data.map((value, index) =>
-        <option key={index}>{value.name}</option>);
-    };
+    // const renderGroups = () => {
+    //     return getGroupResult.data.map((value, index) =>
+    //     <option key={index} value={value.name}>{value.name}</option>);
+    // };
     
     //Render view
     return(
@@ -79,236 +96,195 @@ export default () => {
                        <div className="card-title">
                             <h3>Crear figura</h3>   
                         </div>
-                        {getGroupResult ?
+                        {/* {getGroupResult ? */}
                             <div className="figure-item-container">
                                 <div className="inputs-container">
                                     <p>Elige un grupo</p>
-                                    <select className="select">
-                                        {renderGroups()}
+                                    <select className="select" value={groupName} onChange={handleSelectChange}>
+                                        {/* {renderGroups()} */}
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                        <option value="Option 3">Option 3</option>
+                                        <option value="Option 4">Option 4</option>
                                     </select>
                                 </div>
                                 <div className="inputs-container">
                                     <p>Nombre de la figura</p>
-                                    <input type="text" className="select"/>
+                                    <input 
+                                        type="text" 
+                                        className="select"
+                                        onChange={handleInputChange}
+                                        value={figureName}
+                                    />
                                 </div>
                                 <div className="figure-item-content">
-                                <div className="figure-row">
-                                    <div 
-                                        className={
-                                        positionsData[0] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(0)}
-                                    >
+                                    <div className="figure-row">
+                                        <div
+                                            id={0} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={1} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={2} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={3} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={4} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
                                     </div>
-                                    <div 
-                                        className={
-                                        positionsData[1] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(1)}
-                                    >
+                                    <div className="figure-row">
+                                        <div
+                                            id={5} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={6} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={7} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={8} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={9} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
                                     </div>
-                                    <div 
-                                        className={
-                                        positionsData[2] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(2)}
-                                    >
+                                    <div className="figure-row">
+                                        <div
+                                            id={10} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={11} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={12} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={13} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={14} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
                                     </div>
-                                    <div 
-                                        className={
-                                        positionsData[3] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(3)}
-                                    >
+                                    <div className="figure-row">
+                                        <div
+                                            id={15} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={16} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={17} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={18} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={19} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
                                     </div>
-                                    <div 
-                                        className={
-                                        positionsData[4] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(4)}
-                                    >
+                                    <div className="figure-row">
+                                        <div
+                                            id={20} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={21} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={22} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={23} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
+                                        <div
+                                            id={24} 
+                                            className={"figure"}
+                                            onClick={handleFigureItemClick}
+                                        >
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="figure-row">
-                                    <div 
-                                        className={
-                                        positionsData[5] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(5)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[6] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(6)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[7] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(7)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[8] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(8)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[9] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(9)}
-                                    >
-                                    </div>
-                                </div>
-                                <div className="figure-row">
-                                    <div 
-                                        className={
-                                        positionsData[10] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(10)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[11] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(11)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[12] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(12)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[13] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(13)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[14] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(14)}
-                                    >
-                                    </div>
-                                </div>
-                                <div className="figure-row">
-                                    <div 
-                                        className={
-                                        positionsData[15] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(15)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[16] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(16)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[17] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(17)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[18] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(18)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[19] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(19)}
-                                    >
-                                    </div>
-                                </div>
-                                <div className="figure-row">
-                                    <div 
-                                        className={
-                                        positionsData[20] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(20)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[21] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(21)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[22] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(22)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[23] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(23)}
-                                    >
-                                    </div>
-                                    <div 
-                                        className={
-                                        positionsData[24] ? 
-                                        "figure-color" :
-                                        "figure"}
-                                        onClick={()=>handleFigureItemClick(24)}
-                                    >
-                                    </div>
-                                </div>
                                 </div>
                                 <div className="button">
                                     <button>Crear</button>
                                 </div>
                             </div>
-                            : <CircularProgress size={100} color="primary" />
-                        } 
+                            {/* : <CircularProgress size={100} color="primary" />
+                        }  */}
                     </div>
                 </div>
             </div>
