@@ -1,0 +1,33 @@
+@import '../../setup';
+
+.figure-container {
+    display: flex;
+
+    .figure-content {
+        @include content;
+        overflow: auto;
+
+        .card-container {
+            @include card-container;
+
+            .card-content {
+                @include card-content;
+                flex-direction: column;
+                margin-top: 20px;
+
+                .card-title {
+                    text-align: center;
+                    width: 100%;
+
+                    h3 {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .figure-item-container {
+                    padding: 3%;
+                }
+            }
+        }
+    }
+}

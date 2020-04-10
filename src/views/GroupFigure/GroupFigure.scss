@@ -1,0 +1,54 @@
+@import '../../setup';
+
+.group-container {
+    display: flex;
+
+    .group-content {
+        @include content;
+        overflow: auto;
+
+        .card-container {
+            @include card-container;
+
+            .card-content {
+                @include card-content;
+                flex-direction: column;
+                margin-top: 20px;
+
+                .card-title {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .group-description {
+                    align-items: center;
+                    border-bottom: 1px solid rgba(0,0,0,.12);
+                    color: rgba(0,0,0,.87);
+                    display: flex;
+                    font-size: 12px;
+                    font-weight: 500;
+                    justify-content: space-around;
+                    margin: 0 24px;
+                }
+
+                .group-item-container {
+                    margin: 0 24px;
+                    margin-bottom: 20px;
+
+                    .group-item {
+                        align-items: center;
+                        border-bottom: 1px solid rgba(0,0,0,.12);
+                        display: flex;
+                        height: 48px;
+                        justify-content: space-around;
+                        width: 100%;
+
+                        .group-item-data {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

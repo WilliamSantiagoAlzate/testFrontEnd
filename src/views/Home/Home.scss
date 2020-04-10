@@ -1,0 +1,17 @@
+@import '../../setup';
+
+.home-container {
+    display: flex;
+
+    .home-content {
+        background-color: $bg-color;
+        color: rgba(0,0,0,.87);
+        font-family: Roboto,"Helvetica Neue",sans-serif;
+        text-align: center;
+        width: 100%;
+
+        h1 {
+            margin-top: 20vh;
+        }
+    }
+}
