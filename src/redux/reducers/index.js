@@ -9,6 +9,7 @@ import getFigure from './getFigure';
 import createFigure from './createFigure';
 import updateFigure from './updateFigure';
 import getGroup from './getGroup';
+import putFigureInfo from './putFigureInfo';
 
 //Add reducers to root
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
 	getFigure,
 	createFigure,
 	updateFigure,
-	getGroup
+	getGroup,
+	putFigureInfo
 });
 
 export default rootReducer;

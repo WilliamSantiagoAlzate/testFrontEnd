@@ -33,7 +33,7 @@ export default () => {
         } else {
             localStorage.setItem('name', userResult.name);
             localStorage.setItem('auth', userResult.Authorization);
-            //document.location.href = document.location.origin + "/home";
+            document.location.href = document.location.origin + "/home";
         }
     }
 

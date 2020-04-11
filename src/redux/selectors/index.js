@@ -17,3 +17,5 @@ export const createFigureResultSelector = state => get(state, 'createFigure.resu
 export const updateFigureResultSelector = state => get(state, 'updateFigure.result');
 //Get group selector
 export const getGroupResultSelector = state => get(state, 'getGroup.result');
+//Put figure info selector
+export const putFigureInfoSelector = state => get(state, 'putFigureInfo.figureInfo');

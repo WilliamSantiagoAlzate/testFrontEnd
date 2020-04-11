@@ -1,6 +1,6 @@
 //Import test libraries
 import React from 'react';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -18,7 +18,7 @@ const mockStore = configureStore();
 //Do tests
 it('Should render header, menu and figure item components', () => {
     const store = mockStore({});
-    const wrapper = render(
+    const wrapper = shallow(
         <Provider store={store}>
             <BrowserRouter>
                 <Route>

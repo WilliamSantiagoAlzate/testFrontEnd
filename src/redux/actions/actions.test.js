@@ -9,6 +9,7 @@ import { getUser } from './getUser';
 import { logIn } from './logIn';
 import { showMenu } from './menu';
 import { updateFigure } from './updateFigure';
+import { putFigureInfo } from './putFigureInfo';
 
 const mockStore = configureStore();
 
@@ -100,5 +101,18 @@ it('Should run the update figure action', () => {
     const actions = store.getActions();
     expect(actions.length).toBe(1);
     expect(actions[0].type).toBe("START_UPDATE_FIGURE");
+    expect(actions[0].payload).not.toBeNull();
+});
+
+//Do test the put figure info action 
+it('Should run the put figure info action', () => {
+    const store = mockStore({ });
+
+    const figure = { id: "1", name: "Horizontal" };
+    store.dispatch(putFigureInfo(figure));
+
+    const actions = store.getActions();
+    expect(actions.length).toBe(1);
+    expect(actions[0].type).toBe("PUT_FIGURE_INFO");
     expect(actions[0].payload).not.toBeNull();
 });

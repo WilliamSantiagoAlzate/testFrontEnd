@@ -1,5 +1,5 @@
 //Import libraries
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -9,20 +9,28 @@ import './FigureItem.scss';
 //Import Icon
 import EditIcon from '@material-ui/icons/Edit';
 
-//Create component
-export default ({name, positionsWinner}) => {
-    //Create dispatch
-    //const dispatch = useDispatch();
+//Import figureInfo actions
+import { putFigureInfo } from '../../redux/actions/putFigureInfo';
 
-    //Create state
-    //const [menu, setMenu] = useState("none");
+//Create component
+export default ({ groupFigureId, name, positionsWinner, id}) => {
+    //Create dispatch
+    const dispatch = useDispatch();
+    //Put id
+    const handleLinkCLick = () => {
+        dispatch(putFigureInfo({groupFigureId, name, positionsWinner, id}));
+    }
 
     //Render figure item
     return(
         <div className="figure-item">
             <div className="figure-item-title">
                 <p>{name}</p>
-                <Link to="/updateFigure">
+                <Link 
+                    to="/updateFigure" 
+                    className="edit-icon" 
+                    onClick={handleLinkCLick}
+                >
                     <EditIcon />
                 </Link>
             </div>

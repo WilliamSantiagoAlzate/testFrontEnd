@@ -22,7 +22,7 @@ function * logInRequest(dataUser) {
 
     //Do request
     try {
-        const result = yield call(apiCall, '/user-0.0.1-SNAPSHOT/auth', requestOptions);
+        const result = yield call(apiCall, '/userweb-0.0.1-SNAPSHOT/auth', requestOptions);
         yield put({ type: SUCCESS_LOG_IN, result });
     } catch(error) {
         yield put({ type: ERROR_LOG_IN, error });

@@ -23,7 +23,7 @@ function * getUserRequest(dataUser) {
 
     //Do request
     try {
-        const result = yield call(apiCall, '/user-0.0.1-SNAPSHOT/myprofile', requestOptions);
+        const result = yield call(apiCall, '/userweb-0.0.1-SNAPSHOT/myprofile', requestOptions);
         yield put({ type: SUCCESS_GET_USER, result });
     } catch(error) {
         yield put({ type: ERROR_GET_USER, error });

@@ -22,7 +22,7 @@ function * getGroupRequest(dataUser) {
 
     //Do request
     try {
-        const result = yield call(apiCall, '/game-0.0.1-SNAPSHOT/groupfigure', requestOptions);
+        const result = yield call(apiCall, '/gameweb-0.0.1-SNAPSHOT/groupfigure', requestOptions);
         yield put({ type: SUCCESS_GET_GROUP, result });
     } catch(error) {
         yield put({ type: ERROR_GET_GROUP, error });

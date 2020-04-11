@@ -26,3 +26,5 @@ export const SUCCESS_UPDATE_FIGURE = 'SUCCESS_UPDATE_FIGURE';
 export const ERROR_UPDATE_FIGURE = 'ERROR_UPDATE_FIGURE';
 //Menu
 export const SHOW_MENU = 'SHOW_MENU';
+//figureInfo
+export const PUT_FIGURE_INFO = 'PUT_FIGURE_INFO';

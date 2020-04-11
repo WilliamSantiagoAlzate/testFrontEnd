@@ -15,7 +15,9 @@ function * createFigureRequest(dataUser) {
     const positions = dataUser.payload.positions;
     const user = dataUser.payload.user;
 
-    let raw = JSON.stringify({"id_grupofigure":idGroup,"figurename":figureName,"positions":positions});
+    let raw = JSON.stringify({"idFigureGroup":idGroup,"figureName":figureName,"positions":positions});
+
+    console.log(raw);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -31,7 +33,7 @@ function * createFigureRequest(dataUser) {
 
     //Do request
     try {
-        const result = yield call(apiCall, '/game-0.0.1-SNAPSHOT/figure', requestOptions);
+        const result = yield call(apiCall, '/gameweb-0.0.1-SNAPSHOT/figure', requestOptions);
         yield put({ type: SUCCESS_CREATE_FIGURE, result });
     } catch(error) {
         yield put({ type: ERROR_CREATE_FIGURE, error });

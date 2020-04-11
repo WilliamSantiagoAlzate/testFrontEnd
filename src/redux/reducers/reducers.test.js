@@ -6,6 +6,7 @@ import getFigure from './getFigure';
 import createFigure from './createFigure';
 import updateFigure from './updateFigure';
 import getGroup from './getGroup';
+import putFigureInfo from './putFigureInfo';
 
 //Do test of login
 describe('Login', () => {
@@ -244,5 +245,20 @@ describe('Get group of figures', () => {
         expect(
             getGroup({}, { type: "ERROR_GET_GROUP", error: error})
         ).toEqual({result: error});
+    });
+});
+
+//Do test of put figure info
+describe('Put figure info', () => {
+    it('Should returns the initial state', () => {
+        expect(menu(undefined, {})).toEqual({});
+    });
+
+    it('Put figure info', () => {
+        const figure = {id: 1, name: "Horizontal"};
+
+        expect(
+            putFigureInfo({}, { type: "PUT_FIGURE_INFO", payload: figure})
+        ).toEqual({figureInfo: figure});
     });
 });
