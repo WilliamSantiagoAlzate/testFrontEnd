@@ -24,7 +24,7 @@ export default () => {
     const [isLogIn, setIsLogIn] = useState(false);
     //Get selectors
     const userResult = useSelector(state => logInResultSelector(state));
-
+    
     //Check LogIn
     if (userResult) {
         if (userResult instanceof SyntaxError) {
@@ -33,7 +33,7 @@ export default () => {
         } else {
             localStorage.setItem('name', userResult.name);
             localStorage.setItem('auth', userResult.Authorization);
-            document.location.href = document.location.origin + "/home";
+            //document.location.href = document.location.origin + "/home";
         }
     }
 
@@ -86,7 +86,7 @@ export default () => {
                     </div>
 
                     <div className="form-item">
-                        <button>
+                        <button type='submit'>
                             {isLogIn ? "CARGANDO..." : "INICIAR SESIÓN"}
                         </button>
                     </div>

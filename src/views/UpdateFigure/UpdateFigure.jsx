@@ -8,13 +8,14 @@ import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
 
 //Import style
-import './CreateFigure.scss';
+import './UpdateFigure.scss';
 
 //Import createFigure actions
-import { createFigure } from '../../redux/actions/createFigure';
+//import { createFigure } from '../../redux/actions/createFigure';
 import { getGroup } from '../../redux/actions/getGroup';
 
 //Import createFigure selector
+//import { createFigureResultSelector } from '../../redux/selectors';
 import { getGroupResultSelector } from '../../redux/selectors';
 
 let positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -24,6 +25,7 @@ export default () => {
     //Create dispatch
     const dispatch = useDispatch();
     //Get selectors
+    //const createFigureResult = useSelector(state => createFigureResultSelector(state));
     const getGroupResult = useSelector(state => getGroupResultSelector(state));
     //Create state
     const [figureName, setFigureName] = useState("");
@@ -39,12 +41,12 @@ export default () => {
         }
     }
 
-    //Get groups
-    useEffect(() => {
-        if (!getGroupResult) {
-            dispatch(getGroup(user));
-        }
-    });
+    // //Get groups
+    // useEffect(() => {
+    //     if (!getGroupResult) {
+    //         dispatch(getGroup(user));
+    //     }
+    // });
 
     //Handle select change
     const handleSelectChange = (event) => {
@@ -71,38 +73,42 @@ export default () => {
     //Handle submit data
     const handleSubmitData = (event) => {
         event.preventDefault();
-        const group_id = getGroupResult.data.filter((group) => group.name === groupName);
-        if (figureName !== "") {
-            dispatch(createFigure(group_id, figureName, positions, user));
-        } else {
-            alert('Ingrese un nombre de figura');
-        }
+        //const group_id = getGroupResult.data.filter((group) => group.name === groupName);
+        //if (figureName !== "") {
+            //dispatch(createFigure(group_id, figureName, positions, user));
+        //} esle {
+        //    alert('Ingrese un nombre de figura');
+        //}
     }
 
     //Render groups
-    const renderGroups = () => {
-        setGroupName(getGroupResult.data[0].name);     
-        return getGroupResult.data.map((value, index) =>
-        <option key={index} value={value.name}>{value.name}</option>);
-    };
+    // const renderGroups = () => {
+    //     setGroupName(getGroupResult.data[0].name);     
+    //     return getGroupResult.data.map((value, index) =>
+    //     <option key={index} value={value.name}>{value.name}</option>);
+    // };
     
     //Render view
     return(
-        <div className="create-container">
+        <div className="update-container">
             <Menu />
-            <div className="create-content">
+            <div className="update-content">
                 <Header/>
                 <div className="card-container">
                     <div className="card-content">
                        <div className="card-title">
-                            <h3>Crear figura</h3>   
+                            <h3>Editar figura</h3>   
                         </div>
-                        {getGroupResult ?
+                        {/* {getGroupResult ? */}
                             <div className="figure-item-container">
                                 <div className="inputs-container">
                                     <p>Elige un grupo</p>
                                     <select className="select" value={groupName} onChange={handleSelectChange}>
-                                        {renderGroups()}
+                                        {/* {renderGroups()} */}
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                        <option value="Option 3">Option 3</option>
+                                        <option value="Option 4">Option 4</option>
                                     </select>
                                 </div>
                                 <div className="inputs-container">
@@ -280,8 +286,8 @@ export default () => {
                                     <button onClick={handleSubmitData}>Crear</button>
                                 </div>
                             </div>
-                            : <CircularProgress size={100} color="primary" />
-                        }
+                            {/* : <CircularProgress size={100} color="primary" />
+                        }  */}
                     </div>
                 </div>
             </div>

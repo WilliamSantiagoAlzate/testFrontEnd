@@ -5,6 +5,8 @@ import { all } from 'redux-saga/effects';
 import logIn from './logIn';
 import getUser from './getUser';
 import getFigure from './getFigure';
+import createFigure from './createFigure';
+import updateFigure from './updateFigure';
 import getGroup from './getGroup';
 
 //Add watchers
@@ -13,6 +15,8 @@ export default function * rootSaga() {
         logIn(),
         getUser(),
         getFigure(),
+        createFigure(),
+        updateFigure(),
         getGroup()
     ]);
 }

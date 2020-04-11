@@ -9,6 +9,7 @@ import User from './views/User/User';
 import Figure from './views/Figure/Figure';
 import GroupFigure from './views/GroupFigure/GroupFigure';
 import CreateFigure from './views/CreateFigure/CreateFigure';
+import UpdateFigure from './views/UpdateFigure/UpdateFigure';
 
 //Create App
 function App() {
@@ -37,6 +38,10 @@ function App() {
         }
         {auth ? 
           <Route path="/createFigure" component={CreateFigure} /> 
+          : <Redirect to="/"/>
+        }
+        {auth ? 
+          <Route path="/updateFigure" component={UpdateFigure} /> 
           : <Redirect to="/"/>
         }
       </Switch>

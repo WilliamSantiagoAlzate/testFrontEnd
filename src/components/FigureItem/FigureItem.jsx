@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 //Import style
 import './FigureItem.scss';
 
+//Import Icon
+import EditIcon from '@material-ui/icons/Edit';
+
 //Create component
 export default ({name, positionsWinner}) => {
     //Create dispatch
@@ -19,7 +22,9 @@ export default ({name, positionsWinner}) => {
         <div className="figure-item">
             <div className="figure-item-title">
                 <p>{name}</p>
-                <a href="">X</a>
+                <Link to="/updateFigure">
+                    <EditIcon />
+                </Link>
             </div>
             <div className="figure-item-content">
                 <div className="figure-row">
